@@ -1,0 +1,22 @@
+{
+  "name": "Image Tagger",
+  "short_name": "ImageTagger",
+  "description": "A Progressive Web App for viewing and tagging images",
+  "start_url": "/",
+  "id": "imgtagger",
+  "display": "standalone",
+  "background_color": "#1f2937",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

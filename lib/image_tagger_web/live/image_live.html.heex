@@ -1,0 +1,37 @@
+<div class="h-screen bg-gray-900 text-white flex flex-col">
+  <.header_bar>
+    <:title>Image Tagger</:title>
+    <.search_bar phx-change="search" phx-submit="search" search_term={@search_term} />
+    <.image_counter quantity={length(@filtered_images)} />
+  </.header_bar>
+
+  <div class="flex h-screen">
+    <.sidebar images={@filtered_images} current_image={@current_image} />
+    <div :if={@current_image} class="flex-1 flex flex-col">
+      <.image_display
+        :if={@current_image}
+        image={@current_image}
+        on_prev="previous_image"
+        on_next="next_image"
+      />
+      <.image_info>
+        <h2 class="text-l font-semibold text-white mb-2">{@current_image.name}</h2>
+        <.tags_section
+          tags={@current_image.tags}
+          show_tag_form={@show_tag_form}
+          on_toggle_tag_form="toggle_tag_form"
+          on_remove_tag="remove_tag"
+          on_add_tags="add_tags"
+        />
+      </.image_info>
+    </div>
+    <div :if={!@current_image} class="flex-1 flex">
+      <.no_image_info>
+        <:header>No Images Found</:header>
+        <:message>
+          Check your IMAGE_DIRECTORIES environment variable and ensure the directories contain supported image files.
+        </:message>
+      </.no_image_info>
+    </div>
+  </div>
+</div>
